@@ -20,4 +20,5 @@ def ip_show():
 
 
 if __name__ == '__main__':
+    print('Are you OK')
     ip_show()
