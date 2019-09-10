@@ -3,6 +3,7 @@ import time
 import redis
 import pickle
 
+from lxml import etree
 
 try:
     import http.client as http_client
@@ -52,8 +53,8 @@ class myWebDriver(Chrome):
             # the socket.
             pass
 
-
-r = redis.Redis('127.0.0.1', port=6379, password='08200redis')
+r = redis.Redis(host='116.255.163.127', port=6379, password='BDVxnhaTmYl0w42o')
+# r = redis.Redis('127.0.0.1', port=6379, password='08200redis')
 while 1:
 
     time.sleep(1) 
@@ -71,32 +72,36 @@ while 1:
 
                     print '第%s次打开浏览器登录h5' %(x + 1)
                     time.sleep(5)
-                    browser.get('https://s.m.taobao.com/h5?q=%E4%B8%83%E5%8C%B9%E7%8B%BC&sst=1&n=20&buying=buyitnow')
+                    browser.get('https://uland.taobao.com/sem/tbsearch?refpid=mm_26632258_3504122_32538762&clk1=5997212905a1b52f7392a4f54f668dfd&keyword=怦然心动&page=0')
                     time.sleep(5)
 
                     #获得cookie和token
-                    cookies_begin = browser.get_cookies()
-                    cookies = ""
-                    token = ""
-                    for cookie in cookies_begin:
-                        cookies += cookie.get('name') + '=' + cookie.get('value') + ';'
-                        if cookie.get('name') == '_m_h5_tk':
-                            token = cookie.get('value').split('_')[0]
-                            print (token)
-                            r.set('token', token)
-                    time.sleep(10)
-                    r.set('cookies', cookies)
-                    r.lpush('cookie_pool',  str({'token':token, 'cookie':cookies}))
-                    print ('cookies保存成功')
-                    print(cookies)
-                    a = input('p:')
-
-                    if 'https://login.m.taobao.com/login.htm?' in browser.page_source:
-                        r.set('click_flag', '1')
-                    browser.quit()
+                    # a = input('检查是否出现验证：')
+                    # browser.get_screenshot_as_file('test.png')
+                    # cookies_begin = browser.get_cookies()
+                    # cookies = ""
+                    # token = ""
+                    # for cookie in cookies_begin:
+                    #     cookies += cookie.get('name') + '=' + cookie.get('value') + ';'
+                    #     if cookie.get('name') == '_m_h5_tk':
+                    #         token = cookie.get('value').split('_')[0]
+                    #         print (token)
+                    #         r.set('token', token)
+                    # time.sleep(10)
+                    # r.set('cookies', cookies)
+                    # r.lpush('cookie_pool',  str({'token':token, 'cookie':cookies}))
+                    # print ('cookies保存成功')
+                    # print(cookies)
+                    # if 'https://login.m.taobao.com/login.htm?' in browser.page_source:
+                    #     r.set('click_flag', '1')
+                    # browser.quit()
+                    res = browser.page_source
+                    content = etree.HTML(res)
+                    result_list = content.xpath('//div[@id="searchResult"]//div[@class="item"]')
+                    print 'result:', len(result_list)
 
                 except Exception, e:
-                    print '此次循环出错'
+                    print '此次循环出错',e
                     continue
 
                 else:

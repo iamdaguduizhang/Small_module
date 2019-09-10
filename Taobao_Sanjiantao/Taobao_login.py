@@ -8,12 +8,17 @@ from selenium.webdriver.chrome.options import Options
 import pickle
 r = redis.Redis(host='116.255.163.127', port=6379, password='BDVxnhaTmYl0w42o')  # redis 服务器
 # r = redis.Redis('127.0.0.1', port=6379, password='08200redis')
+a = [['15313296291', 'qishi123456'], ['15137728278', 'daodou12345'],['13675148457', 'qishi6666'],['2335084018@qq.com', 'fuxiaolei123'],
+['movie_protection@rightknights.com', 'Qishi123456']]
+b = []
+
 while 1:
 	time.sleep(1)
 	print '正在执行'
 	pc_login_flag = r.get('pc_flag')
 	if pc_login_flag == '2':
 		print '循环外'
+
 		for x in range(1):
 			try:
 				time.sleep(2)
@@ -41,9 +46,18 @@ while 1:
 					time.sleep(2)
 
 					# 随机选取一组用户密码，通过微博登录淘宝
-					a = [['15313296291', 'qishi123456'],['15137728278', 'daodou12345'], ['movie_protection@rightknights.com','Qishi123456'],['2335084018@qq.com', 'fuxiaolei123'],['13675148457','qishi6666']]
 					# user_password = a[random.randint(0, len(a)-1)]
-					user_password = a[0]
+
+
+					# if len(a) > 0:
+					# 	user_password = a.pop()
+					# 	b.append(user_password)
+					# else:
+					# 	a.extend(b)
+					# 	continue
+					# print a
+					# print b
+					user_password = a[1]
 					user = user_password[0]
 					password = user_password[1]
 					driver.find_element_by_name('username').send_keys(user)
@@ -90,6 +104,7 @@ while 1:
 				f = open("params" + str(x) +".data", 'wb')
 				pickle.dump(params, f)
 				f.close()
+				print '写入', x
 				time.sleep(3)
 
 			except Exception, e:
