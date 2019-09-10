@@ -6,12 +6,16 @@ import random
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import pickle
+<<<<<<< HEAD
 r = redis.Redis(host='116.255.163.127', port=6379, password='BDVxnhaTmYl0w42o')  # redis 服务器
 # r = redis.Redis('127.0.0.1', port=6379, password='08200redis')
 a = [['15313296291', 'qishi123456'], ['15137728278', 'daodou12345'],['13675148457', 'qishi6666'],['2335084018@qq.com', 'fuxiaolei123'],
 ['movie_protection@rightknights.com', 'Qishi123456']]
 b = []
 
+=======
+# r = redis.Redis('127.0.0.1', port=6379, password='redis')
+>>>>>>> 14247947cb553bffd8892fa1076566ed79ac4a84
 while 1:
 	time.sleep(1)
 	print '正在执行'
@@ -46,6 +50,10 @@ while 1:
 					time.sleep(2)
 
 					# 随机选取一组用户密码，通过微博登录淘宝
+<<<<<<< HEAD
+=======
+					a = [[],[]]
+>>>>>>> 14247947cb553bffd8892fa1076566ed79ac4a84
 					# user_password = a[random.randint(0, len(a)-1)]
 
 
@@ -140,18 +148,3 @@ while 1:
 
 
 
-# 之前的问题是拿到的cookie可能是不能用的，
-# 现在可以拿到确定是可以用的cookie，问题在于更换cookie这里，旧的cookie不能用了，
-# 现在不能让淘宝开着了，
-	# 如果拿到的cookie不能用了，就把这个cookie给删了，然后继续拿cookie继续判断，直到拿到的cookie是可以用的
-	# 才继续向下走代码，
-
-# 问题，是让每两小时获得一批cookie呢，还是说当知道cookie失效了后删除的时候去获得呢。？那第二种的话，如何保证运行的实时性呢、？
-
-# 一直循环，表示为0，不去操作浏览器，失效的时候，表示为1，此时打开五次浏览器，然后修改h5标识,h5执行，然后获得cookie，
-# 我靠，，像淘宝这样，你爬取它，他肯定是会知道的，然后它先不管你，它查看你是怎么爬的它，然后在你的爬虫的某些关键的地方进行
-# 进行一些反爬，那你的爬虫就没得搞了，
-# 获取cookie池里的cookie，失效的话就将cookie删除，并去添加新的cookie
-	# 任务死循环，获取到有效的cookie才会退出，
-		# 为防止任务一直不退出，一个任务如果执行三分钟还没获取到有效cookie则退出。
-		# 哪一个任务如果执行的时间大于三分钟呢（大于三分钟的判断在没有获取到cookie的时候进行）
