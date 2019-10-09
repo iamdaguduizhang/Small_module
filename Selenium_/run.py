@@ -7,3 +7,4 @@ if __name__ == '__main__':
     url = 'https://www.zhihu.com/signup?next=%2F'
     cookie = chrom.get_noheadless_cookie(url, 35,)
     chrom.use_cookie(url, )
+    # this is test
