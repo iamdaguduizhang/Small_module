@@ -29,4 +29,4 @@ def enter():
     win32api.keybd_event(13, 0, win32con.KEYEVENTF_KEYUP, 0)
 
 # win32api.mouse_event(win32con.MOUSEEVENTF_WHEEL,0,0,1)  # 此处为鼠标滚动
-# win32api.GetCursorPos()  # 获取当前鼠标的位置
+# win32api.GetCursorPos()  # 获取当前鼠标的位置 ha
