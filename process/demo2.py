@@ -10,7 +10,7 @@ from multiprocessing import Process
 class MyProcess(Process):
 
     def __init__(self, name, data=None):
-        super().__init__()
+        super().__init__()  #
         self.name = name
         self.data = data
 
@@ -32,3 +32,15 @@ if __name__ == "__main__":
     p4.start()
     p1.join()
     print('主线程')
+
+# class myProcess(Process):
+#
+#     def __init__(self, name, data=None, *args):
+#         self.name = name
+#         self.data = data
+#         self.args = args
+#
+#     def run(self):
+#         print(self.data)
+#         for x in self.args:
+#             print(x)

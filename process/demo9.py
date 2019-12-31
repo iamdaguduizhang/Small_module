@@ -10,12 +10,12 @@ from multiprocessing import Process, Pool
 
 def func(msg):
     print("msg:", msg)
-    time.sleep(1)
+    time.sleep(3)
     return msg
 
 
-if __name__ == "__main__":
-    pool = Pool(processes=3)
+if __name__ == "__main0__":
+    pool = Pool(processes=4)
     res_l = []
     for i in range(10):
         msg = "hello %d" % (i)
@@ -32,8 +32,8 @@ if __name__ == "__main__":
 # 二：使用进程池（同步调用,apply）
 
 
-if __name__ == "__main0__":
-    pool = Pool(processes=3)
+if __name__ == "__main__":
+    pool = Pool(processes=4)
     res_l = []
     for i in range(10):
         msg = "hello %d" %(i)

@@ -8,11 +8,11 @@ import time
 
 
 def work(lock):
-    lock.acquire()  # 加锁牺牲了效率，这和单进程效率
+    # lock.acquire()  # 加锁牺牲了效率，这和单进程效率
     print('%s is running' % os.getpid())
     time.sleep(2)
     print('%s is done' % os.getpid())
-    lock.release()
+    # lock.release()
 
 
 if __name__ == '__main__':
