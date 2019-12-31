@@ -9,7 +9,6 @@ from xlutils.copy import copy
 
 R_PASS = os.environ["REDIS_PASS"]
 print (R_PASS)
-exit()
 r = redis.Redis(host='116.255.163.127', port=6379, password=R_PASS)
 
 
@@ -77,6 +76,23 @@ def xianyu():
     r.set('task_dict', str(task_dict))
 
 
+def s_360():
+    """360"""
+    lt = read_excel(r'C:\Users\Administrator\Desktop\360_add_taskdict.xlsx')
+    taobao_task_dict = {}
+    taobao_task_lt = []
+    for x in lt:
+        taobao_task_lt.append(int(x[0]))
+        lt_ = []
+        lt_.append(x[1].replace("\n", ""))
+        lt_.append(int(x[2]))
+        taobao_task_dict[int(x[0])] = lt_
+    print(taobao_task_dict)
+    print(taobao_task_lt)
+    r.set('360_task_lt', str(taobao_task_lt))
+    r.set('360_task_dict', str(taobao_task_dict))
+
+
 def taobao():
     lt = read_excel(r'C:\Users\Administrator\Desktop\taobao_task.xlsx')
     taobao_task_dict = {}
@@ -94,8 +110,9 @@ def taobao():
 
 
 if __name__ == "__main__":
-    xianyu()
-
+    # xianyu()
+    taobao()
+    # s_360()
     # with open(r'C:\Users\Administrator\Desktop\History\pythonSeleniumWebdriverChrome-master\pythonSeleniumWebdriverChrome-master\ChromeDriver\python\A_bilibli\5', 'r') as f:
     #     lt = eval(f.read())
     # write_excel('bilibli', lt, )
@@ -105,3 +122,13 @@ if __name__ == "__main__":
     #     with open("uid.txt", "a") as fp2:
     #         fp2.write(str(uid) + "\n")
     # change_excel()
+    # with open("11.txt", "r") as fp:
+    #     lt = fp.read()
+    # a = []
+    # for x in lt.split("\n"):
+    #     b =  []
+    #     for y in x.split(","):
+    #         b.append(y)
+    #     a.append(b)
+    # print(a)
+    # write_excel('wanweigang', a, )
