@@ -1,42 +1,41 @@
 # -*- coding:utf-8 -*-
 # @Time   : 2019/10/10 11:20
 # @Author : Dg
-
+import os
+import time
 from multiprocessing import Process, Queue
 n = 100  # 在windows系统中应该把全局变量定义在if __name__ == '__main__'之上就可以了
 a = Queue()
 a.put(1)
 a.put(2)
 a.put(2)
+b = [1,2,3]
 
 
-def work():
+def work(n, b):
 
-    global n
     print(n)
     n = 0
-    print('子进程内: ', id(n), a.get())
+    # print('子进程内: ', id(n), a.get(), id(a), "线程id", os.getpid())
+    b.append(4)
+    print(b)
     print(n)
-
-
-from multiprocessing import Pool
-import time
 
 
 def mycallback(x):
     list1.append(x)
 
 
-def sayHi(num):
-    return num
-
-
 if __name__ == '__main__':
-    p = Process(target=work)
+    p = Process(target=work, args=(n, b))  # 疑问，为什么子进程的参数的id是一样的。a.get() 取的值也是一样的
     p.start()
-    p2 = Process(target=work)
+    print(b)
+    # time.sleep(3)
+    p2 = Process(target=work, args=(n, b))
+    p.join()
     p2.start()
-    print('主进程内: ', id(n), a.get())
+    print('主进程内: ', id(n), a.get(),id(a))
+    print(b)
     # print(n)
 
     # 主进程内:  100
@@ -51,3 +50,5 @@ if __name__ == '__main__':
     # pool.join()
     #
     # print(list1)
+# python 向函数传递参数的时候，如果传递的是可变的对象，那么传递的就是可变对象的引用，在函数内对对象的操作
+# 影响了原来的对象的值。 但是如果在函数内部变量进行新的赋值操作，那么原来的变量，就停留在修改之前。

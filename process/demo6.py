@@ -9,7 +9,7 @@ from multiprocessing import Process, JoinableQueue, Queue
 
 
 def consumer(q):
-    while 0:
+    while 1:
         # if q.empty(): break
         res = q.get()
         print(res)
@@ -17,13 +17,13 @@ def consumer(q):
         time.sleep(random.random())
         print('\033[45m%s 吃 %s\033[0m' %( os.getpid(), res))
         q.task_done()
-    for x in range(6):  # 2就一直阻塞着，q在阻塞，生产者进程就不能正常结束 超过3也没见报错诶，是因为随着主进程结束了
-        res = q.get()
-        print(res)
-        # if not res: break
-        time.sleep(random.random())
-        print('\033[45m%s 吃 %s\033[0m' % (os.getpid(), res))
-        q.task_done()
+    # for x in range(6):  # 2就一直阻塞着，q在阻塞，生产者进程就不能正常结束 超过3也没见报错诶，是因为随着主进程结束了
+    #     res = q.get()
+    #     print(res)
+    #     # if not res: break
+    #     time.sleep(random.random())
+    #     print('\033[45m%s 吃 %s\033[0m' % (os.getpid(), res))
+    #     q.task_done()
 
 
 def producer(q):

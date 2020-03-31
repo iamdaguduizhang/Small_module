@@ -94,7 +94,7 @@ def s_360():
 
 
 def taobao():
-    lt = read_excel(r'C:\Users\Administrator\Desktop\taobao_task.xlsx')
+    lt = read_excel(r'C:\Users\Administrator\Desktop\taobao_task .xlsx')
     taobao_task_dict = {}
     taobao_task_lt = []
     for x in lt:
@@ -110,25 +110,33 @@ def taobao():
 
 
 if __name__ == "__main__":
-    # xianyu()
-    taobao()
-    # s_360()
-    # with open(r'C:\Users\Administrator\Desktop\History\pythonSeleniumWebdriverChrome-master\pythonSeleniumWebdriverChrome-master\ChromeDriver\python\A_bilibli\5', 'r') as f:
-    #     lt = eval(f.read())
-    # write_excel('bilibli', lt, )
+    # lt = read_excel(r"C:\Users\Administrator\Desktop\douyin_alive.xls")
+    # # print(lt)
     # for x in lt:
-    #     # print (x)
-    #     uid = x[0].split('/')[-1]
-    #     with open("uid.txt", "a") as fp2:
-    #         fp2.write(str(uid) + "\n")
-    # change_excel()
-    # with open("11.txt", "r") as fp:
-    #     lt = fp.read()
-    # a = []
-    # for x in lt.split("\n"):
-    #     b =  []
-    #     for y in x.split(","):
-    #         b.append(y)
-    #     a.append(b)
-    # print(a)
-    # write_excel('wanweigang', a, )
+    #     title = x[3]
+    #     print(title)
+
+    # xianyu()
+    # taobao()
+    # s_360()
+    with open(r'toutiao_result', 'r', encoding='utf-8') as f:
+        lt = eval(f.read())
+    # for x in lt:
+    #     if len(x) <5:
+    #         continue
+    #     elif not x[3] or not x[4]:
+    #         continue
+    #     else:
+    #
+    #         with open("toutiao_result2", 'a', encoding='utf-8') as f2:
+    #             f2.write(str(x) + ',' + "\n")
+    write_excel('toutiao222', lt)
+    # for y in lt:
+    #     a = 0
+    #     for x in y[4].split("/"):
+    #         if x:
+    #             a += int(x)
+    #     y[4] = int(a/(len(y[4].split("/"))-1))
+    #     print(y)
+    #     with open("toutiao_result3", 'a', encoding='utf-8') as f2:
+    #         f2.write(str(y) + ',' + "\n")

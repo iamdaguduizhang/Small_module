@@ -10,7 +10,7 @@ from multiprocessing import Process
 class MyProcess(Process):
 
     def __init__(self, name, data=None):
-        super().__init__()  #
+        super().__init__()  # 执行父类的构造函数，使得我们能够调用父类的属性。
         self.name = name
         self.data = data
 
@@ -44,3 +44,20 @@ if __name__ == "__main__":
 #         print(self.data)
 #         for x in self.args:
 #             print(x)
+if __name__ == "1__main__":  # super().__init__ test
+    class A(object):
+        def __init__(self):
+            self.name = "aa"
+            print ("this is A 实例化")
+
+        def run(self):
+            print("this is A.run")
+
+    class B(A):
+        def __init__(self):
+            super().__init__()
+            self.name_b = 'bb'
+            print("this is B 实例化")
+    b = B()
+    b.run()
+    print(b.name)

@@ -1,20 +1,25 @@
 1.恢复出厂设置。
+
 2.下载开发版系统，安装。
-3.绑定账户信息（小米账号），下载解锁软件（Pc上），手机进入Bootloader（关机键 + 音量 -键），按照解锁软件解锁。
-全程需要小米账号的参与
 
+3.绑定账户信息（小米账号，开发者选项里），下载解锁软件（Pc上），手机进入Bootloader（关机键 + 音量 -键），按照解锁软件解锁。全程需要小米账号的参与
 
-
+-----------------
 小米手机解锁system
 
 adb root
 adb disable-verity
 
+-----------------------
 小米装系统
 
 下载好ROM 包 可以通过miui版本号安装，也可以在Recovery（将ROM包放在根目录，命名为update.zip） 模式下安装 第三方 Recovery模式可以选择 ROM包
+
+开机状态下：进入“系统更新”，点右上角“...”选择“重启到恢复模式（Recovery）”，点击“立即重启” 进入Recovery模式。
+
 https://zhidao.baidu.com/question/519651911.html
 
+-----------------------------
 Could not load available ZIP files.Pull down to try again.  网络问题。
 
 
@@ -22,4 +27,4 @@ Could not load available ZIP files.Pull down to try again.  网络问题。
 手机开启system的读写权限之后  之后就不能开机了，感觉是system的问题导致不能开机
 
 
-system 删除内容 可以使用 Re 管理器 赋予root权限即可
+system 删除内容 可以使用 Re 管理器 赋予root权限即可 ，不可行
