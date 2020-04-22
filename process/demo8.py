@@ -9,7 +9,7 @@ def work(n):
     time.sleep(3)
     return n**2
 
-if __name__ == '__main_-_':
+if __name__ == '__main__':
     p=Pool(3) #进程池中从无到有创建三个进程,以后一直是这三个进程在执行任务
     res_l=[]
     for i in range(10):
@@ -18,7 +18,7 @@ if __name__ == '__main_-_':
     print(res_l)
 
 
-if __name__ == "__main__":
+if __name__ == "__main_-_":
     p=Pool(3)  # 进程池中从无到有创建三个进程,以后一直是这三个进程在执行任务
     res_l = []
     for i in range(10):

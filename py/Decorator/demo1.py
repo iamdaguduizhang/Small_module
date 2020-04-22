@@ -30,3 +30,53 @@ if __name__ == "__main__":
     # 由此可以看出,装饰器会对原函数的元信息进行更改,可以使用wraps,进行原函数信息的添加
     # wraps本身也是一个装饰器, 他能把函数的元信息拷贝到装饰器函数中使得装饰器函数与原函数有一样的元信息
 
+
+class A(object):
+
+    _score = 0
+
+    @property
+    def score(self):
+        return self._score
+
+    @score.setter
+    def score(self, value):
+        if not isinstance(value, int):
+            raise ValueError('score must be an integer!')
+        if value < 0 or value > 100:
+            raise ValueError('score must between 0 ~ 100!')
+        self._score = value
+
+b = A()
+print(b.score)
+b.score = 100
+
+
+class Chain(object):
+
+    def __init__(self, path=''):
+        print("=", path)
+        self._path = path
+
+    def __getattr__(self, path):
+
+        print(path, type(path))
+        return Chain('%s/%s' % (self._path, path))
+
+    def __call__(self, value):
+        print('My name is %s.' % value)
+        return Chain('%s/%s' % (self._path, ':' + value))
+
+    def __str__(self):
+        return self._path
+
+    __repr__ = __str__
+
+
+# print(Chain().status.user.timeline.list)
+# 执行结果Chain().status = Chain('status')
+
+# GET /users/:user/repos
+# 调用时，需要把:user替换为实际用户名。如果我们能写出这样的链式调用：
+#
+print(Chain().users ('michael').repd)
