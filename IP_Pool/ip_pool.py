@@ -9,8 +9,8 @@ import redis
 #  维持100个可用的ip， ip可用性用一个数值表示（初始为10，小于6的就淘汰掉）。一个ip请求失败-1
 import requests, threading
 
-# r = redis.Redis(host='116.255.163.127', port=6379, password='BDVxnhaTmYl0w42o')
-pool = redis.ConnectionPool(host='116.255.163.127', port=6379, password='BDVxnhaTmYl0w42o')
+# r = redis.Redis(host='116.255.163', port=6379, password='000')
+pool = redis.ConnectionPool(host='116.255.163', port=6379, password='0')
 r = redis.Redis(connection_pool=pool)
 r.h
 index = str(random.randint(0, 10))
